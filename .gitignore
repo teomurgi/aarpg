@@ -1,3 +1,33 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# macOS specific ignores
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# macOS 11.0+ specific files
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# VSCode specific ignores
+.vscode/
+.history/
+*.code-workspace
+
+# IntelliJ specific ignores
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
