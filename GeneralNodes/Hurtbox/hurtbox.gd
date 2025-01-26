@@ -6,11 +6,6 @@ class_name Hurtbox extends Area2D
 func _ready() -> void:
 	area_entered.connect(enterArea)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func enterArea(a: Area2D) -> void:
 	if a is Hitbox:
-		a.takeDamage(damage)    
+		a.takeDamage(self)    

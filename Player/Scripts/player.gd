@@ -10,16 +10,25 @@ const DIR_4 = [
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
 
+var invulnerable: bool = false
+var hp: int = 6
+var max_hp: int = 6
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
+@onready var hitbox: Hitbox = $Hitbox
 
 signal direction_changed(new_direction: Vector2)
+signal player_damaged(hurtbox: Hurtbox)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.player = self
 	state_machine.initialize(self)
+	hitbox.damaged.connect(takeDamage)
+	updateHp(99)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,3 +67,26 @@ func animationDirection() -> String:
 	if cardinal_direction == Vector2.UP:
 		return "up"
 	return "side"
+
+func takeDamage(hurtbox: Hurtbox) -> void:
+	if invulnerable == true:
+		return
+	updateHp(-hurtbox.damage)
+	if hp > 0:
+		player_damaged.emit(hurtbox)
+	else:
+		player_damaged.emit(hurtbox)
+		updateHp(99)
+
+func updateHp(delta: int) -> void:
+	hp = clampi(hp + delta, 0, max_hp)
+
+func makeInvulnerable(duration: float = 1.0) -> void:
+	invulnerable = true
+	hitbox.monitoring = false
+
+	await get_tree().create_timer(duration).timeout
+
+	invulnerable = false
+	hitbox.monitoring = true
+	

@@ -1,6 +1,6 @@
 class_name Hitbox extends Area2D
 
-signal damaged(damage: int)
+signal damaged(hurtbox: Hurtbox)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +11,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func takeDamage(damage: int) -> void:
-	print("Damage taken: ", damage)
-	damaged.emit(damage)
+func takeDamage(hurtbox: Hurtbox) -> void:
+	damaged.emit(hurtbox)
 	return

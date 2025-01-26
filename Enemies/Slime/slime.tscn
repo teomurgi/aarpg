@@ -724,14 +724,6 @@ collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_mx360")
 
-[node name="Hurtbox" parent="." instance=ExtResource("2_1ssqy")]
-position = Vector2(0, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_wkqjs")
-debug_color = Color(1, 0, 0, 0.419608)
-
 [node name="Hitbox" parent="." instance=ExtResource("4_qvwet")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
@@ -780,6 +772,14 @@ next_state = NodePath("../Idle")
 script = ExtResource("12_hnol4")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_1ssqy")]
+position = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_wkqjs")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="DestroyEffectSprite" type="Sprite2D" parent="."]
 visible = false
