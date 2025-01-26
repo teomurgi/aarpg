@@ -6,7 +6,7 @@ class_name StateStun extends State
 
 var hurtbox: Hurtbox
 var direction: Vector2
-
+var current_knockback_speed: float
 var next_state: State = null
 
 @onready var idleState: State = $"../Idle"
@@ -18,9 +18,9 @@ func init() -> void:
 func enter() -> void:
 
 	player.animation_player.animation_finished.connect(onAnimationFinished)
-
+	current_knockback_speed = knockback_speed
 	direction = player.global_position.direction_to((hurtbox.global_position))
-	player.velocity = -direction * knockback_speed
+	player.velocity = -direction * current_knockback_speed
 	player.setDirection()
 	player.updateAnimation("stun")
 	player.makeInvulnerable(invulnerable_duration)
@@ -34,6 +34,12 @@ func exit() -> void:
 
 ## What happens during the _process update in this State
 func process(_delta: float) -> State:
+	print(player.velocity)
+	current_knockback_speed -= decelerate_speed * _delta
+	player.velocity = clampf(current_knockback_speed, 0, knockback_speed) * -direction
+	print(player.velocity)
+	print("")
+	player.setDirection()
 	return next_state
 	
 ## What happens during the _physics_process update in this State
