@@ -1,7 +1,9 @@
 class_name Enemy extends CharacterBody2D
 
 signal direction_changed(new_direction: Vector2)
-signal enemy_damanged()
+signal enemy_damaged()
+signal enemy_destroyed()
+
 const DIR_4 = [
 	Vector2.RIGHT,
 	Vector2.DOWN,
@@ -25,6 +27,7 @@ var invulnerable: bool = false
 func _ready() -> void:
 	state_machine.initialize(self)
 	player = PlayerManager.player
+	hitbox.damaged.connect(takeDamage)
 	pass # Replace with function body.
 
 
@@ -51,6 +54,7 @@ func setDirection(_new_direction: Vector2) -> bool:
 	return true
 
 func updateAnimation(state: String) -> void:
+	print("Update Animation: ", state + "_" + animationDirection())
 	animation_player.play(state + "_" + animationDirection())
 
 func animationDirection() -> String:
@@ -59,3 +63,12 @@ func animationDirection() -> String:
 	if cardinal_direction == Vector2.UP:
 		return "up"
 	return "side"
+
+func takeDamage(damage: int) -> void:
+	if invulnerable == true:
+		return
+	hp -= damage
+	if hp > 0:
+		enemy_damaged.emit()
+	else:
+		enemy_destroyed.emit()
