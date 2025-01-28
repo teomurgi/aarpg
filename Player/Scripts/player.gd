@@ -27,8 +27,8 @@ signal player_damaged(hurtbox: Hurtbox)
 func _ready() -> void:
 	PlayerManager.player = self
 	state_machine.initialize(self)
-	hitbox.damaged.connect(takeDamage)
-	updateHp(99)
+	hitbox.damaged.connect(take_damage)
+	update_hp(99)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,10 +40,10 @@ func _process(_delta: float) -> void:
 		Input.get_axis("up", "down"),
 	).normalized()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-func setDirection() -> bool:
+func set_direction() -> bool:
 	
 	if direction == Vector2.ZERO:
 		return false;
@@ -58,31 +58,31 @@ func setDirection() -> bool:
 	direction_changed.emit(cardinal_direction)
 	return true
 	
-func updateAnimation(state: String) -> void:
-	animation_player.play(state + "_" + animationDirection())
+func update_animation(state: String) -> void:
+	animation_player.play(state + "_" + animation_direction())
 
-func animationDirection() -> String:
+func animation_direction() -> String:
 	if cardinal_direction == Vector2.DOWN:
 		return "down"
 	if cardinal_direction == Vector2.UP:
 		return "up"
 	return "side"
 
-func takeDamage(hurtbox: Hurtbox) -> void:
+func take_damage(hurtbox: Hurtbox) -> void:
 	if invulnerable == true:
 		return
-	updateHp(-hurtbox.damage)
+	update_hp(-hurtbox.damage)
 	if hp > 0:
 		player_damaged.emit(hurtbox)
 	else:
 		player_damaged.emit(hurtbox)
-		updateHp(99)
+		update_hp(99)
 
-func updateHp(delta: int) -> void:
+func update_hp(delta: int) -> void:
 	hp = clampi(hp + delta, 0, max_hp)
-	PlayerHud.updateHp(hp, max_hp)
+	PlayerHud.update_hp(hp, max_hp)
 
-func makeInvulnerable(duration: float = 1.0) -> void:
+func make_invulnerable(duration: float = 1.0) -> void:
 	invulnerable = true
 	hitbox.monitoring = false
 

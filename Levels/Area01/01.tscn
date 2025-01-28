@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bunlbicjsr55y"]
+[gd_scene load_steps=5 format=3 uid="uid://bunlbicjsr55y"]
 
 [ext_resource type="PackedScene" uid="uid://cb6ftpgkld0jy" path="res://Tile Maps/grass-01.tscn" id="1_kwymh"]
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_m6rqe"]
 [ext_resource type="PackedScene" uid="uid://vy18spun6aw5" path="res://Levels/player_spawn.tscn" id="2_d27vr"]
+[ext_resource type="PackedScene" uid="uid://c3s63nt7iqp2y" path="res://Levels/level_transition.tscn" id="4_u58bs"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_m6rqe")
@@ -12,3 +13,14 @@ layer_0/tile_data = PackedInt32Array(-65538, 917504, 5, -2, 917504, 5, -1, 65536
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("2_d27vr")]
 position = Vector2(212, 74)
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_u58bs")]
+position = Vector2(240, 320)
+level = "res://Levels/Area01/02.tscn"
+size = 3
+side = 3
+
+[node name="LevelTransition2" parent="." instance=ExtResource("4_u58bs")]
+position = Vector2(544, 128)
+level = "res://Levels/Area01/03.tscn"
+side = 1

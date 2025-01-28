@@ -16,24 +16,24 @@ func init() -> void:
 ## What happens when the player enters this state
 func enter() -> void:
 
-	player.animation_player.animation_finished.connect(onAnimationFinished)
+	player.animation_player.animation_finished.connect(on_animation_finished)
 	direction = player.global_position.direction_to((hurtbox.global_position))
 	player.velocity = -direction * knockback_speed
-	player.setDirection()
-	player.updateAnimation("stun")
-	player.makeInvulnerable(invulnerable_duration)
+	player.set_direction()
+	player.update_animation("stun")
+	player.make_invulnerable(invulnerable_duration)
 	player.effect_animation_player.play("damaged")
 
 ## What happens when the player exits this state
 func exit() -> void:
 	next_state = null
-	player.animation_player.animation_finished.disconnect(onAnimationFinished)
+	player.animation_player.animation_finished.disconnect(on_animation_finished)
 	pass
 
 ## What happens during the _process update in this State
 func process(_delta: float) -> State:
 	player.velocity -= player.velocity * decelerate_speed * _delta
-	player.setDirection()
+	player.set_direction()
 	return next_state
 	
 ## What happens during the _physics_process update in this State
@@ -41,14 +41,14 @@ func physics(_delta: float) -> State:
 	return null
 
 ## What happens with input events in this State
-func handleInput(_event: InputEvent) -> State:
+func handle_input(_event: InputEvent) -> State:
 	return null
 
 func _player_damaged(_hurtbox: Hurtbox) -> void:
 	hurtbox = _hurtbox
-	state_machine.changeState(self)
+	state_machine.change_state(self)
 	pass
 
-func onAnimationFinished(_name: String) -> void:
+func on_animation_finished(_name: String) -> void:
 	next_state = idleState
 	pass

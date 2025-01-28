@@ -5,7 +5,7 @@ class_name StateIdle extends State
 
 ## What happens when the player enters this state
 func enter() -> void:
-	player.updateAnimation("idle")
+	player.update_animation("idle")
 	
 
 ## What happens when the player exits this state
@@ -24,7 +24,7 @@ func physics(_delta: float) -> State:
 	return null
 
 ## What happens with input events in this State
-func handleInput(_event: InputEvent) -> State:
+func handle_input(_event: InputEvent) -> State:
 	if _event.is_action_pressed("attack"):
 		return attackState
 	return null

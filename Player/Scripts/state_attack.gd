@@ -15,9 +15,9 @@ var isAttacking: bool = false
 
 ## What happens when the player enters this state
 func enter() -> void:
-	attack_anim_player.play("attack_" + player.animationDirection())
-	player.updateAnimation("attack")
-	animation_player.animation_finished.connect(endAttack)
+	attack_anim_player.play("attack_" + player.animation_direction())
+	player.update_animation("attack")
+	animation_player.animation_finished.connect(end_attack)
 	audio.stream = attack_sound
 	audio.pitch_scale = randf_range(0.9, 1.1)
 	audio.play()
@@ -28,7 +28,7 @@ func enter() -> void:
 
 ## What happens when the player exits this state
 func exit() -> void:
-	animation_player.animation_finished.disconnect(endAttack)
+	animation_player.animation_finished.disconnect(end_attack)
 	isAttacking = false
 	hurtbox.monitoring = false
 
@@ -47,8 +47,8 @@ func physics(_delta: float) -> State:
 	return null
 
 ## What happens with input events in this State
-func handleInput(_event: InputEvent) -> State:
+func handle_input(_event: InputEvent) -> State:
 	return null
 
-func endAttack(_newAnimName: String) -> void:
+func end_attack(_newAnimName: String) -> void:
 	isAttacking = false

@@ -6,7 +6,7 @@ class_name HearthGUI extends Control
 var value: int = 2:
 	set(_value):
 		value = _value
-		updateSprite()
+		update_sprite()
 
-func updateSprite() -> void:
+func update_sprite() -> void:
 	sprite.frame = value

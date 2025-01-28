@@ -27,5 +27,5 @@ func physics(_delta: float) -> State:
 	return null
 
 ## What happens with input events in this State
-func handleInput(_event: InputEvent) -> State:
+func handle_input(_event: InputEvent) -> State:
 	return null

@@ -12,7 +12,7 @@ var _direction: Vector2
 var _animation_finished: bool = false
 
 func init() -> void:
-	enemy.enemy_damaged.connect(onEnemyDamaged)
+	enemy.enemy_damaged.connect(on_enemy_damaged)
 
 
 ## What happens when the player enters this state
@@ -22,15 +22,15 @@ func enter() -> void:
 
 	_direction = enemy.global_position.direction_to(_damage_position)
 
-	enemy.setDirection(_direction)
+	enemy.set_direction(_direction)
 	enemy.velocity = -_direction * knockback_speed
-	enemy.updateAnimation(anim_name)
-	enemy.animation_player.animation_finished.connect(onAnimationFinished)
+	enemy.update_animation(anim_name)
+	enemy.animation_player.animation_finished.connect(on_animation_finished)
 	
 ## What happens when the player exits this state
 func exit() -> void:
 	enemy.invulnerable = false
-	enemy.animation_player.animation_finished.disconnect(onAnimationFinished)
+	enemy.animation_player.animation_finished.disconnect(on_animation_finished)
 
 ## What happens during the _process update in this State
 func process(delta: float) -> EnemyState:
@@ -44,9 +44,9 @@ func physics(_delta: float) -> EnemyState:
 	return null
 	
 
-func onEnemyDamaged(hurtbox: Hurtbox) -> void:
+func on_enemy_damaged(hurtbox: Hurtbox) -> void:
 	_damage_position = hurtbox.global_position
-	state_machine.changeState(self)
+	state_machine.change_state(self)
 
-func onAnimationFinished(_name: String) -> void:
+func on_animation_finished(_name: String) -> void:
 	_animation_finished = true

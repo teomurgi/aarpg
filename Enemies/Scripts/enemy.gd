@@ -27,7 +27,7 @@ var invulnerable: bool = false
 func _ready() -> void:
 	state_machine.initialize(self)
 	player = PlayerManager.player
-	hitbox.damaged.connect(takeDamage)
+	hitbox.damaged.connect(take_damage)
 	pass # Replace with function body.
 
 
@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
-func setDirection(_new_direction: Vector2) -> bool:
+func set_direction(_new_direction: Vector2) -> bool:
 	direction = _new_direction
 	if direction == Vector2.ZERO:
 		return false;
@@ -53,17 +53,17 @@ func setDirection(_new_direction: Vector2) -> bool:
 	direction_changed.emit(cardinal_direction)
 	return true
 
-func updateAnimation(state: String) -> void:
-	animation_player.play(state + "_" + animationDirection())
+func update_animation(state: String) -> void:
+	animation_player.play(state + "_" + animation_direction())
 
-func animationDirection() -> String:
+func animation_direction() -> String:
 	if cardinal_direction == Vector2.DOWN:
 		return "down"
 	if cardinal_direction == Vector2.UP:
 		return "up"
 	return "side"
 
-func takeDamage(hurtbox: Hurtbox) -> void:
+func take_damage(hurtbox: Hurtbox) -> void:
 	if invulnerable == true:
 		return
 	hp -= hurtbox.damage
