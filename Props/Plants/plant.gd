@@ -5,5 +5,6 @@ class_name Plant extends Node
 func _ready() -> void:
 	$Hitbox.damaged.connect(takeDamage)
 
-func takeDamage(_damage: int) -> void:
+func takeDamage(_hurtbox: Hurtbox) -> void:
+	print("Plant took damage")
 	queue_free()
