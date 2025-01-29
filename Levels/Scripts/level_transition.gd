@@ -61,7 +61,6 @@ func get_offset() -> Vector2:
 	return offset
 
 func _update_area() -> void:
-	print("Updating Area")
 	var new_rect: Vector2 = Vector2(32, 32)
 	var new_position: Vector2 = Vector2.ZERO
 

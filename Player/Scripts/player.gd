@@ -53,10 +53,13 @@ func set_direction() -> bool:
 	
 	if new_cardinal_direction == cardinal_direction:
 		return false;
-	cardinal_direction = new_cardinal_direction
+	set_cardinal_direction(new_cardinal_direction)
+	return true
+
+func set_cardinal_direction(_cardinal_direction: Vector2) -> void:
+	cardinal_direction = _cardinal_direction
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	direction_changed.emit(cardinal_direction)
-	return true
 	
 func update_animation(state: String) -> void:
 	animation_player.play(state + "_" + animation_direction())
