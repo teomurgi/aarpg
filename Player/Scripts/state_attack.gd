@@ -23,7 +23,8 @@ func enter() -> void:
 	audio.play()
 	isAttacking = true
 	await get_tree().create_timer(0.075).timeout
-	hurtbox.monitoring = true
+	if isAttacking:
+		hurtbox.monitoring = true
 	
 
 ## What happens when the player exits this state

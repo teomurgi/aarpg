@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bi1q410lwdkn3"]
+[gd_scene load_steps=38 format=3 uid="uid://bi1q410lwdkn3"]
 
 [ext_resource type="Texture2D" uid="uid://d32nb8smdbq1c" path="res://Enemies/Slime/Slime.png" id="1_dv402"]
 [ext_resource type="Script" path="res://Enemies/Scripts/enemy.gd" id="1_mx360"]
@@ -12,7 +12,10 @@
 [ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_wander.gd" id="7_dksbp"]
 [ext_resource type="Texture2D" uid="uid://cekn6nej76ogr" path="res://Enemies/Slime/DestroySmoke.png" id="11_c2mxn"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_stun.gd" id="11_xge1y"]
+[ext_resource type="Script" path="res://Enemies/Scripts/drop_data.gd" id="12_4tlao"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_destroy.gd" id="12_hnol4"]
+[ext_resource type="Resource" uid="uid://cdxbruqmrib2n" path="res://Items/gem.tres" id="13_0g83i"]
+[ext_resource type="Resource" uid="uid://cn3fx2d7a37wu" path="res://Items/apple.tres" id="14_oxb7w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wkqjs"]
 radius = 13.0384
@@ -54,6 +57,18 @@ tracks/2/path = NodePath("Sprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShoadowSprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -139,6 +154,18 @@ tracks/5/keys = {
 "clips": PackedStringArray("destroy"),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ShoadowSprite2D:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_io3fi"]
 resource_name = "destroy_side"
@@ -219,6 +246,18 @@ tracks/5/keys = {
 "clips": PackedStringArray("destroy"),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ShoadowSprite2D:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_qd24q"]
 resource_name = "destroy_up"
@@ -298,6 +337,18 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "clips": PackedStringArray("destroy"),
 "times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ShoadowSprite2D:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7ncp8"]
@@ -659,6 +710,20 @@ _data = {
 "walk_up": SubResource("Animation_m64fo")
 }
 
+[sub_resource type="Resource" id="Resource_ng7ue"]
+script = ExtResource("12_4tlao")
+item = ExtResource("13_0g83i")
+probability = 100.0
+min_amount = 1
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_akfh8"]
+script = ExtResource("12_4tlao")
+item = ExtResource("14_oxb7w")
+probability = 35.0
+min_amount = 1
+max_amount = 1
+
 [sub_resource type="Animation" id="Animation_chpc5"]
 length = 0.001
 tracks/0/type = "value"
@@ -770,6 +835,7 @@ next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("12_hnol4")
+drops = Array[ExtResource("12_4tlao")]([SubResource("Resource_ng7ue"), SubResource("Resource_akfh8")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

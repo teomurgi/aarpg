@@ -6,5 +6,4 @@ func _ready() -> void:
 	$Hitbox.damaged.connect(take_damage)
 
 func take_damage(_hurtbox: Hurtbox) -> void:
-	print("Plant took damage")
 	queue_free()
