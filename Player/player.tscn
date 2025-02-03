@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://2db0lhscm60a"]
+[gd_scene load_steps=46 format=3 uid="uid://2db0lhscm60a"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_liv5b"]
 [ext_resource type="Texture2D" uid="uid://bs8irpudal8n1" path="res://Player/Sprites/PlayerSprite02.png" id="2_kl37f"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Player/Scripts/state_stun.gd" id="11_mse0c"]
 [ext_resource type="PackedScene" uid="uid://c1px0udxivwom" path="res://GeneralNodes/HitBox/hitbox.tscn" id="13_7asfx"]
 [ext_resource type="AudioStream" uid="uid://dxoj3663jrc6j" path="res://Player/Audio/hit_player.wav" id="14_ffjy6"]
+[ext_resource type="Script" path="res://Player/Scripts/push_area.gd" id="14_vhmad"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lkyq3"]
 
@@ -533,6 +534,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mydt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fojhl"]
+size = Vector2(20, 15)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_l012i"]
 
 [sub_resource type="Animation" id="Animation_jsdsd"]
@@ -694,6 +698,17 @@ monitoring = false
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_1mydt")
 debug_color = Color(0.134459, 0.630987, 0.407877, 0.42)
+
+[node name="PushArea" type="Area2D" parent="Interactions"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("14_vhmad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_fojhl")
+debug_color = Color(0.765838, 0.320584, 0.791069, 0.42)
 
 [node name="Hitbox" parent="." instance=ExtResource("13_7asfx")]
 collision_layer = 2
