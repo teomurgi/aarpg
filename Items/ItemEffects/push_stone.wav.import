@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ctqrcaavhvxrc"
-path="res://.godot/imported/push_stone.wav-558d57c7d7a3b4de07fe59a1cc1355fd.sample"
+path="res://.godot/imported/push_stone.wav-69d90a4f0b5e2911d6f20dfd22dab15a.sample"
 
 [deps]
 
-source_file="res://Interactables/Dungeon/push_stone.wav"
-dest_files=["res://.godot/imported/push_stone.wav-558d57c7d7a3b4de07fe59a1cc1355fd.sample"]
+source_file="res://Items/ItemEffects/push_stone.wav"
+dest_files=["res://.godot/imported/push_stone.wav-69d90a4f0b5e2911d6f20dfd22dab15a.sample"]
 
 [params]
 

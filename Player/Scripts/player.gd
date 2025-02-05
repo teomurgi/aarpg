@@ -20,6 +20,7 @@ var max_hp: int = 6
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var hitbox: Hitbox = $Hitbox
 
+
 signal direction_changed(new_direction: Vector2)
 signal player_damaged(hurtbox: Hurtbox)
 
