@@ -1,21 +1,22 @@
-[gd_scene load_steps=46 format=3 uid="uid://2db0lhscm60a"]
+[gd_scene load_steps=47 format=3 uid="uid://2db0lhscm60a"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_liv5b"]
 [ext_resource type="Texture2D" uid="uid://bs8irpudal8n1" path="res://Player/Sprites/PlayerSprite02.png" id="2_kl37f"]
 [ext_resource type="Script" path="res://Player/Scripts/player_state_machine.gd" id="3_7jldt"]
 [ext_resource type="Texture2D" uid="uid://dq2vtj4nylidd" path="res://Player/Sprites/Shadow.png" id="3_477fl"]
 [ext_resource type="Texture2D" uid="uid://uqgfem3v8tpw" path="res://Player/Sprites/AttackSprite01.png" id="3_c1iyq"]
-[ext_resource type="Script" path="res://Player/Scripts/state_idle.gd" id="4_2orqn"]
-[ext_resource type="Script" path="res://Player/Scripts/state_walk.gd" id="5_5wh3r"]
-[ext_resource type="Script" path="res://Player/Scripts/state_attack.gd" id="6_shyk3"]
+[ext_resource type="Script" path="res://Player/Scripts/States/state_idle.gd" id="4_2orqn"]
+[ext_resource type="Script" path="res://Player/Scripts/States/state_walk.gd" id="5_5wh3r"]
+[ext_resource type="Script" path="res://Player/Scripts/States/state_attack.gd" id="6_shyk3"]
 [ext_resource type="AudioStream" uid="uid://drpltxefru0cv" path="res://Player/Audio/SwordSwoosh.wav" id="8_8bnn0"]
 [ext_resource type="PackedScene" uid="uid://co7wfsyk83hcx" path="res://GeneralNodes/Hurtbox/hurtbox.tscn" id="10_ea5qi"]
 [ext_resource type="Script" path="res://Player/Scripts/player_interactions_host.gd" id="10_lxkfi"]
 [ext_resource type="Script" path="res://Player/Scripts/player_camera.gd" id="11_gsyew"]
-[ext_resource type="Script" path="res://Player/Scripts/state_stun.gd" id="11_mse0c"]
+[ext_resource type="Script" path="res://Player/Scripts/States/state_stun.gd" id="11_mse0c"]
 [ext_resource type="PackedScene" uid="uid://c1px0udxivwom" path="res://GeneralNodes/HitBox/hitbox.tscn" id="13_7asfx"]
 [ext_resource type="AudioStream" uid="uid://dxoj3663jrc6j" path="res://Player/Audio/hit_player.wav" id="14_ffjy6"]
 [ext_resource type="Script" path="res://Player/Scripts/push_area.gd" id="14_vhmad"]
+[ext_resource type="Script" path="res://Player/Scripts/Abilities/abilities.gd" id="17_wvuv8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lkyq3"]
 
@@ -721,3 +722,6 @@ shape = SubResource("CircleShape2D_l012i")
 libraries = {
 "": SubResource("AnimationLibrary_a8i84")
 }
+
+[node name="Abilities" type="Node" parent="."]
+script = ExtResource("17_wvuv8")
