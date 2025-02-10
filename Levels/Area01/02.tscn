@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0y1mm6ld4d0j"]
+[gd_scene load_steps=14 format=3 uid="uid://b0y1mm6ld4d0j"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_v3hys"]
 [ext_resource type="PackedScene" uid="uid://cb6ftpgkld0jy" path="res://Tile Maps/grass-01.tscn" id="2_fuo2c"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bybdc5bban0eo" path="res://Npc/npc.tscn" id="7_0gt1b"]
 [ext_resource type="Resource" uid="uid://dpylmf2e0si0x" path="res://Npc/00_Npcs/npc_02.tres" id="8_1lvy5"]
 [ext_resource type="PackedScene" uid="uid://cow3bcky1vums" path="res://Npc/npc_behavior_wander.tscn" id="8_54h6d"]
+[ext_resource type="PackedScene" uid="uid://cxv1hywsysayy" path="res://Npc/npc_behavior_patrol.tscn" id="10_mvlxp"]
+[ext_resource type="PackedScene" uid="uid://ck7m0n4e76e3l" path="res://Interactables/TreasureChest/treasure_chest.tscn" id="10_p2snu"]
+[ext_resource type="Resource" uid="uid://dddgl1uxbbprp" path="res://Items/potion.tres" id="11_32k2a"]
+[ext_resource type="PackedScene" uid="uid://cfalbfqupu6mq" path="res://Npc/patrol_location.tscn" id="11_i0bsh"]
 
 [node name="02" type="Node2D"]
 y_sort_enabled = true
@@ -57,6 +61,29 @@ npc_resource = ExtResource("8_1lvy5")
 [node name="NPC2" parent="." instance=ExtResource("7_0gt1b")]
 position = Vector2(389, 136)
 
-[node name="NpcWanderBehavior" parent="NPC2" instance=ExtResource("8_54h6d")]
-wander_speed = 60.0
-wander_duration = 4.0
+[node name="NpcBehaviorPatrol" parent="NPC2" instance=ExtResource("10_mvlxp")]
+process_mode = 0
+
+[node name="PatrolLocation" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_i0bsh")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, 2)
+wait_time = 1.0
+
+[node name="PatrolLocation2" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_i0bsh")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(52, 50)
+wait_time = 1.0
+
+[node name="PatrolLocation3" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_i0bsh")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-76, 84)
+wait_time = 1.0
+
+[node name="PatrolLocation4" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_i0bsh")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(11, 109)
+wait_time = 1.0
+
+[node name="TreasureChest" parent="." instance=ExtResource("10_p2snu")]
+position = Vector2(84, 36)
+item_data = ExtResource("11_32k2a")
