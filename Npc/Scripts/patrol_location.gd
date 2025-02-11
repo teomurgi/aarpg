@@ -3,6 +3,8 @@ class_name PatrolLocation extends Node2D
 
 signal transform_changed
 
+@onready var label_2: Label = $Sprite2D/Label2
+
 @export var wait_time: float = 0.0:
     set(v):
         wait_time = v
@@ -35,4 +37,5 @@ func update_line(next_location: Vector2) -> void:
 func _update_wait_time_label() -> void:
     if not Engine.is_editor_hint():
         return
-    $Sprite2D/Label2.text = "wait: " + str(snappedf(wait_time, 0.1)) + "s"
+    if label_2 != null:
+        label_2.text = "wait: " + str(snappedf(wait_time, 0.1)) + "s"

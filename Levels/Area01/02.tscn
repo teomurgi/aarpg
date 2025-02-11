@@ -62,7 +62,6 @@ npc_resource = ExtResource("8_1lvy5")
 position = Vector2(389, 136)
 
 [node name="NpcBehaviorPatrol" parent="NPC2" instance=ExtResource("10_mvlxp")]
-process_mode = 0
 
 [node name="PatrolLocation" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_i0bsh")]
 modulate = Color(1, 0, 0, 1)

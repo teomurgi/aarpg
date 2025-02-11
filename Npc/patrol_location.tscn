@@ -18,7 +18,7 @@ fill_to = Vector2(0.5, 0)
 [node name="PatrolLocation" type="Node2D"]
 show_behind_parent = true
 script = ExtResource("1_fybtp")
-wait_time = 0.52
+wait_time = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.501961)
@@ -54,5 +54,5 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 8
-text = "wait: 0.5s"
+text = "wait: 0.3s"
 horizontal_alignment = 1
