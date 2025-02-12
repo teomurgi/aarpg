@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0y1mm6ld4d0j"]
+[gd_scene load_steps=17 format=3 uid="uid://b0y1mm6ld4d0j"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_v3hys"]
 [ext_resource type="PackedScene" uid="uid://cb6ftpgkld0jy" path="res://Tile Maps/grass-01.tscn" id="2_fuo2c"]
@@ -9,10 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://bybdc5bban0eo" path="res://Npc/npc.tscn" id="7_0gt1b"]
 [ext_resource type="Resource" uid="uid://dpylmf2e0si0x" path="res://Npc/00_Npcs/npc_02.tres" id="8_1lvy5"]
 [ext_resource type="PackedScene" uid="uid://cow3bcky1vums" path="res://Npc/npc_behavior_wander.tscn" id="8_54h6d"]
+[ext_resource type="PackedScene" uid="uid://dgpyqvcflodt4" path="res://Interactables/Dialog/dialog_interaction.tscn" id="10_8mv6r"]
 [ext_resource type="PackedScene" uid="uid://cxv1hywsysayy" path="res://Npc/npc_behavior_patrol.tscn" id="10_mvlxp"]
 [ext_resource type="PackedScene" uid="uid://ck7m0n4e76e3l" path="res://Interactables/TreasureChest/treasure_chest.tscn" id="10_p2snu"]
 [ext_resource type="Resource" uid="uid://dddgl1uxbbprp" path="res://Items/potion.tres" id="11_32k2a"]
 [ext_resource type="PackedScene" uid="uid://cfalbfqupu6mq" path="res://Npc/patrol_location.tscn" id="11_i0bsh"]
+[ext_resource type="Script" path="res://Interactables/Dialog/Scripts/dialog_text.gd" id="11_nb88k"]
+[ext_resource type="Resource" uid="uid://ctbe63mothv03" path="res://Npc/00_Npcs/00_hero.tres" id="12_c6gxs"]
 
 [node name="02" type="Node2D"]
 y_sort_enabled = true
@@ -57,6 +60,22 @@ position = Vector2(104, 204)
 npc_resource = ExtResource("8_1lvy5")
 
 [node name="NpcWanderBehavior" parent="NPC" instance=ExtResource("8_54h6d")]
+
+[node name="DialogInteraction" parent="NPC" instance=ExtResource("10_8mv6r")]
+enabled = true
+
+[node name="DialogText" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("11_nb88k")
+text = "Hi. [b]Hero[/b] is that you?"
+
+[node name="DialogText2" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("11_nb88k")
+text = "[wave] Heck yeah, I am![/wave]"
+npc_info = ExtResource("12_c6gxs")
+
+[node name="DialogText3" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("11_nb88k")
+text = "Happy to have a hero!"
 
 [node name="NPC2" parent="." instance=ExtResource("7_0gt1b")]
 position = Vector2(389, 136)

@@ -136,7 +136,7 @@ height = 20.0
 
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 0
-collision_mask = 17
+collision_mask = 16
 script = ExtResource("1_hqfms")
 npc_resource = ExtResource("2_18m1o")
 

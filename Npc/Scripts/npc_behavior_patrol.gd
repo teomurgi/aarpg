@@ -33,7 +33,6 @@ func _process(_delta: float) -> void:
     if Engine.is_editor_hint():
         return
     if npc.global_position.distance_to(target.target_position) < 1:
-        print("reached target")
         start()
 
 func gather_patrol_locations(_n: Node = null) -> void:

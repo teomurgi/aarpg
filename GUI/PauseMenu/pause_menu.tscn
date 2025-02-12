@@ -44,12 +44,13 @@ color = Color(0.164706, 0.164706, 0.164706, 0.654902)
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 12.0
 offset_top = 16.0
-offset_right = 92.0
+offset_right = 88.0
 offset_bottom = 39.0
 text = "[ paused ]"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ItemDescription" type="Label" parent="Control"]
 layout_mode = 0
@@ -63,10 +64,10 @@ autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 86.0
-offset_right = 211.0
-offset_bottom = 174.0
+offset_left = 11.0
+offset_top = 83.0
+offset_right = 207.0
+offset_bottom = 171.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_b2gyy")
 
 [node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
@@ -98,20 +99,22 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -47.0
-offset_right = 170.0
-offset_bottom = -16.0
+offset_left = 10.0
+offset_top = -41.0
+offset_right = 164.0
+offset_bottom = -10.0
 grow_vertical = 0
 
 [node name="ButtonSave" type="Button" parent="Control/HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
+size_flags_vertical = 4
 text = "Save"
 
 [node name="ButtonLoad" type="Button" parent="Control/HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
+size_flags_vertical = 4
 text = "Load"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
