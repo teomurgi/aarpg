@@ -98,6 +98,11 @@ func set_dialog_data(d: DialogItem) -> void:
 func start_timer() -> void:
     timer.wait_time = text_speed
     # Manipulate wait_time
+    var _char = plain_text[content.visible_characters - 1]
+    if '.,!?:;'.contains(_char):
+        timer.wait_time *= 4
+    elif ', '.contains(_char):
+        timer.wait_time *= 2
     timer.start()
 
 func _on_timer_timeout() -> void:

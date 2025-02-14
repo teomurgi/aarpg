@@ -101,6 +101,12 @@ modulate = Color(0, 1, 1, 1)
 position = Vector2(11, 109)
 wait_time = 1.0
 
+[node name="DialogInteraction" parent="NPC2" instance=ExtResource("10_8mv6r")]
+
+[node name="DialogText" type="Node" parent="NPC2/DialogInteraction"]
+script = ExtResource("11_nb88k")
+text = "Hi! How's hero?"
+
 [node name="TreasureChest" parent="." instance=ExtResource("10_p2snu")]
 position = Vector2(84, 36)
 item_data = ExtResource("11_32k2a")
