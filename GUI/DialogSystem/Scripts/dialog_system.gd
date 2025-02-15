@@ -97,6 +97,7 @@ func show_dialog_button_indicator(_is_visible: bool) -> void:
 
 func set_dialog_text(d: DialogText) -> void:
 	content.text = d.text
+	choice_options.visible = false
 	name_label.text = d.npc_info.npc_name
 	portrait_sprite.texture = d.npc_info.portrait
 	portrait_sprite.audio_pitch_base = d.npc_info.dialog_audio_pitch
@@ -117,6 +118,9 @@ func set_dialog_choice(d: DialogChoice) -> void:
 		_new_choice.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		_new_choice.pressed.connect(_dialog_choice_selected.bind(d.dialog_branches[i]))
 		choice_options.add_child(_new_choice)
+	if Engine.is_editor_hint():
+		return
+	await get_tree().process_frame
 	await get_tree().process_frame
 	choice_options.get_child(0).grab_focus()
 
