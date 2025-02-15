@@ -1,0 +1,65 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://csggulou7m1sk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n0vx"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 0.2)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhx8g"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5ljp"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpfkt"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w144r"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 0.8)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(0.898039, 0.862745, 0.796078, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_8n0vx")
+Button/styles/focus = SubResource("StyleBoxFlat_bhx8g")
+Button/styles/hover = SubResource("StyleBoxFlat_d5ljp")
+Button/styles/normal = SubResource("StyleBoxFlat_qpfkt")
+Button/styles/pressed = SubResource("StyleBoxFlat_w144r")
+VBoxContainer/constants/separation = 5
