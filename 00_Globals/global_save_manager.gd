@@ -48,7 +48,7 @@ func load_game() -> void:
 	game_loaded.emit()
 
 func update_player_data() -> void:
-	var p: Player = PlayerManager.player
+	var p := PlayerManager.player
 	current_save.player.hp = p.hp
 	current_save.player.max_hp = p.max_hp
 	current_save.player.pos_x = p.global_position.x

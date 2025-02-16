@@ -14,12 +14,12 @@ var invulnerable: bool = false
 var hp: int = 6
 var max_hp: int = 6
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
+# @onready var animation_player: AnimationPlayer = $AnimationPlayer
+# @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var state_machine: PlayerStateMachine = $StateMachine
-@onready var hitbox: Hitbox = $Hitbox
-@onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
+# @onready var state_machine: PlayerStateMachine = $StateMachine
+# @onready var hitbox: Hitbox = $Hitbox
+# @onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
 
 signal direction_changed(new_direction: Vector2)
 signal player_damaged(hurtbox: Hurtbox)
@@ -27,8 +27,8 @@ signal player_damaged(hurtbox: Hurtbox)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.player = self
-	state_machine.initialize(self)
-	hitbox.damaged.connect(take_damage)
+	# state_machine.initialize(self)
+	# hitbox.damaged.connect(take_damage)
 	update_hp(99)
 	
 
@@ -62,8 +62,9 @@ func set_cardinal_direction(_cardinal_direction: Vector2) -> void:
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	direction_changed.emit(cardinal_direction)
 	
-func update_animation(state: String) -> void:
-	animation_player.play(state + "_" + animation_direction())
+func update_animation(_state: String) -> void:
+	# animation_player.play(state + "_" + animation_direction())
+	pass
 
 func animation_direction() -> String:
 	if cardinal_direction == Vector2.DOWN:
@@ -88,10 +89,10 @@ func update_hp(delta: int) -> void:
 
 func make_invulnerable(duration: float = 1.0) -> void:
 	invulnerable = true
-	hitbox.monitoring = false
+	# hitbox.monitoring = false
 
 	await get_tree().create_timer(duration).timeout
 
 	invulnerable = false
-	hitbox.monitoring = true
+	# hitbox.monitoring = true
 	

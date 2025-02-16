@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be6dobwrykqen"
-path="res://.godot/imported/boomerang.png-9088f0d3a0aec2b6802d7d24e629971f.ctex"
+uid="uid://bygu1ffrvijig"
+path="res://.godot/imported/dungeon_prison.png-03a2f1c66c72071ed4602d25e666ac77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/boomerang.png"
-dest_files=["res://.godot/imported/boomerang.png-9088f0d3a0aec2b6802d7d24e629971f.ctex"]
+source_file="res://Tile Maps/Sprites/dungeon_prison.png"
+dest_files=["res://.godot/imported/dungeon_prison.png-03a2f1c66c72071ed4602d25e666ac77.ctex"]
 
 [params]
 
