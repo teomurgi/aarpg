@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3 uid="uid://diqkld54uf3xv"]
+
+[ext_resource type="PackedScene" uid="uid://m3xx64imgioc" path="res://Tile Maps/dungeon-01.tscn" id="1_igeth"]
+[ext_resource type="Script" path="res://TitleScene/Scripts/title_scene.gd" id="1_l2tmb"]
+[ext_resource type="AudioStream" uid="uid://dd53fp1ujxtfc" path="res://TitleScene/Audio/waves.mp3" id="2_8lj4j"]
+[ext_resource type="PackedScene" uid="uid://dsi0pvt4xchx4" path="res://Interactables/Dungeon/pushable_statue.tscn" id="2_ubr2x"]
+[ext_resource type="AudioStream" uid="uid://boj1tn7sqruhf" path="res://TitleScene/Audio/menu_focus.wav" id="3_21y4k"]
+[ext_resource type="Texture2D" uid="uid://bnff3o75rgx38" path="res://TitleScene/Sprites/title.png" id="3_x6yo2"]
+[ext_resource type="AudioStream" uid="uid://bq6bnvg1kfjt3" path="res://TitleScene/Audio/menu_select.wav" id="4_a8hq2"]
+[ext_resource type="PackedScene" uid="uid://vy18spun6aw5" path="res://Levels/player_spawn.tscn" id="5_n8mrb"]
+
+[sub_resource type="Animation" id="Animation_v0vlf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ayyjf"]
+resource_name = "default"
+length = 5.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 6, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6w8pa"]
+_data = {
+"RESET": SubResource("Animation_v0vlf"),
+"default": SubResource("Animation_ayyjf")
+}
+
+[node name="TitleScene" type="Node2D"]
+script = ExtResource("1_l2tmb")
+music = ExtResource("2_8lj4j")
+button_focus_audio = ExtResource("3_21y4k")
+button_press_audio = ExtResource("4_a8hq2")
+
+[node name="Dungeon-01" parent="." instance=ExtResource("1_igeth")]
+layer_0/tile_data = PackedInt32Array(524295, 786432, 6, 589831, 786432, 7, -65531, 786432, 0, 5, 786432, 1, 65541, 786432, 2, -65530, 786432, 0, 6, 786432, 1, 65542, 786432, 2, -65529, 786432, 0, 7, 786432, 1, 65543, 786432, 2, -65528, 786432, 0, 8, 786432, 1, 65544, 786432, 2, -65527, 786432, 0, 9, 786432, 1, 65545, 786432, 2, 131077, 196608, 1, 196613, 196608, 0, 196614, 131072, 0, 262150, 0, 1, 131078, 131072, 1, 262149, 196608, 0, 196615, 65536, 1, 262151, 0, 4, 262152, 65536, 3, 196616, 0, 0, 131079, 0, 3, 131080, 0, 3, 196617, 196608, 1, 262153, 65536, 0, 131081, 65536, 1, 327685, 0, 3, 327686, 196608, 0, 327687, 0, 4, 327688, 65536, 3, 327689, 131072, 2, 458761, 0, 0, 458760, 65536, 2, 458759, 131072, 2, 458758, 196608, 1, 458757, 196608, 1, 393221, 0, 1, 393222, 65536, 4, 393223, 65536, 2, 393224, 65536, 2, 393225, 131072, 1, 131072, 458752, 5, 196608, 458752, 6, 262144, 458752, 7, 327680, 65536, 4, 393216, 65536, 1, 458752, 65536, 3, 524288, 196608, 7, 589824, 720896, 7, 196607, 262144, 5, 262143, 262144, 6, 327679, 262144, 7, 393215, 131072, 2, 458751, 65536, 4, 524287, 65536, 0, 589823, 0, 7, 655359, 655360, 7, -65534, 655360, 0, 2, 655360, 1, 65538, 655360, 2, 131074, 458752, 2, 196610, 458752, 3, 262146, 458752, 4, 327682, 0, 1, 393218, 65536, 2, 458754, 65536, 4, 524290, 851968, 6, 589826, 851968, 7, -65533, 720896, 0, 3, 720896, 1, 65539, 720896, 2, 131075, 524288, 2, 196611, 524288, 3, 262147, 524288, 4, 327683, 131072, 1, 393219, 131072, 2, 458755, 0, 0, 524291, 917504, 6, 589827, 917504, 7, -65535, 589824, 0, 1, 589824, 1, 65537, 589824, 2, 131073, 196608, 4, 196609, 786432, 1, 262145, 786432, 2, 327681, 0, 4, 393217, 131072, 2, 458753, 0, 0, 524289, 786432, 6, 589825, 786432, 7, -65525, 786432, 0, 11, 851968, 1, 65547, 851968, 2, 131083, 262144, 2, 196619, 262144, 3, 262155, 262144, 4, 327691, 0, 4, 393227, 65536, 2, 458763, 196608, 1, 524299, 851968, 6, 589835, 655360, 7, -65524, 851968, 0, 12, 917504, 1, 65548, 917504, 2, 131084, 327680, 2, 196620, 327680, 3, 262156, 327680, 4, 327692, 0, 0, 393228, 131072, 2, 458764, 196608, 2, 524300, 720896, 6, 589836, 720896, 7, -65523, 983040, 0, 13, 983040, 3, 65549, 983040, 4, 131085, 131072, 4, 196621, 786432, 1, 262157, 786432, 2, 327693, 131072, 0, 393229, 196608, 2, 458765, 65536, 0, 524301, 786432, 6, 589837, 786432, 7, -65522, 524288, 7, 14, 524288, 7, 65550, 524288, 7, 131086, 262144, 5, 196622, 262144, 6, 262158, 262144, 7, 327694, 0, 4, 393230, 0, 1, 458766, 65536, 1, 524302, 0, 7, 589838, 851968, 7, -65521, 524288, 7, 15, 524288, 7, 65551, 524288, 7, 131087, 458752, 5, 196623, 458752, 6, 262159, 458752, 7, 327695, 0, 2, 393231, 0, 0, 458767, 65536, 2, 524303, 196608, 7, 589839, 917504, 7, 524293, 196608, 7, 589829, 720896, 7, 524292, 0, 7, 589828, 655360, 7, 524297, 0, 7, 589833, 851968, 7, 524298, 196608, 7, 589834, 917504, 7, -65526, 786432, 0, 10, 786432, 1, 65546, 786432, 2, -65532, 786432, 0, 4, 786432, 1, 65540, 786432, 2, 131076, 0, 0, 196612, 0, 4, 262148, 65536, 1, 327684, 65536, 2, 393220, 0, 2, 458756, 0, 2, 458762, 196608, 1, 393226, 0, 4, 327690, 65536, 4, 262154, 65536, 4, 196618, 131072, 1, 131082, 131072, 0, 524294, 786432, 6, 589830, 786432, 7, 524296, 786432, 6, 589832, 786432, 7, -65536, 524288, 6, -1, 524288, 6, 65535, 524288, 6, 131071, 524288, 6, 0, 524288, 6, 65536, 524288, 6)
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="PushableStatue" parent="Props" instance=ExtResource("2_ubr2x")]
+position = Vector2(64, 168)
+
+[node name="PushableStatue2" parent="Props" instance=ExtResource("2_ubr2x")]
+position = Vector2(416, 168)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.43)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(240, 88)
+texture = ExtResource("3_x6yo2")
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_6w8pa")
+}
+autoplay = "default"
+
+[node name="ButtonNew" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 148.0
+offset_right = 309.0
+offset_bottom = 174.0
+text = "new game"
+
+[node name="ButtonContinue" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 178.0
+offset_right = 309.0
+offset_bottom = 204.0
+text = "continue"
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("5_n8mrb")]
+position = Vector2(240, 127)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 4
