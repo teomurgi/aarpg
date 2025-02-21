@@ -19,7 +19,7 @@ func _ready() -> void:
 
 	if SaveManager.get_save_file() == null:
 		button_continue.disabled = true
-	setup_title_screen()
+	$CanvasLayer/RgSplashScreen.finished.connect(setup_title_screen)
 	LevelManager.level_load_started.connect(exit_title_screen)
 
 func setup_title_screen() -> void:

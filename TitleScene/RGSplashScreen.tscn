@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://lj3mfppgsn7r"]
+
+[ext_resource type="Script" path="res://TitleScene/rg_splash_screen.gd" id="1_0qu7l"]
+[ext_resource type="Texture2D" uid="uid://m23pfqngp3mq" path="res://TitleScene/Sprites/reaction_games_splash.png" id="1_la33c"]
+
+[sub_resource type="Gradient" id="Gradient_fx6oe"]
+offsets = PackedFloat32Array(0, 0.517504, 1)
+colors = PackedColorArray(0.035, 0.047, 0.122, 0, 0.035, 0.047, 0.122, 1, 0.0352941, 0.0470588, 0.121569, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y5bnr"]
+gradient = SubResource("Gradient_fx6oe")
+
+[sub_resource type="Animation" id="Animation_r1trx"]
+resource_name = "default"
+length = 2.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1016, -562), Vector2(500, 285)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hxu8a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-216, -98)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vv81x"]
+_data = {
+"RESET": SubResource("Animation_hxu8a"),
+"default": SubResource("Animation_r1trx")
+}
+
+[node name="RgSplashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0qu7l")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("1_la33c")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -216.0
+offset_top = -98.0
+offset_right = -176.0
+offset_bottom = -58.0
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 185.0
+offset_top = -321.0
+offset_right = 657.0
+offset_bottom = -321.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.523598
+scale = Vector2(3.70951, 16.3676)
+texture = SubResource("GradientTexture1D_y5bnr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../../TextureRect")
+libraries = {
+"": SubResource("AnimationLibrary_vv81x")
+}
+autoplay = "default"
