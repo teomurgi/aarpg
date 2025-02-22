@@ -9,6 +9,7 @@ var isAttacking: bool = false
 @onready var attack_anim_player: AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AnimationPlayer"
 @onready var walkState: State = $"../Walk"
 @onready var idleState: StateIdle = $"../Idle"
+@onready var chargeAttackState: StateChargeAttack = $"../ChargeAttack"
 @onready var audio: AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
 @onready var hurtbox: Hurtbox = %AttackHurtbox
 
@@ -52,4 +53,6 @@ func handle_input(_event: InputEvent) -> State:
 	return null
 
 func end_attack(_newAnimName: String) -> void:
+	if Input.is_action_pressed("attack"):
+		state_machine.change_state(chargeAttackState)
 	isAttacking = false

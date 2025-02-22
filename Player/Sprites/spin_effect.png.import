@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ad53xobe114"
-path="res://.godot/imported/reaction_games_splash.png-a828b82fea76b28e0a3302f621b063a8.ctex"
+uid="uid://bto3lgthw6aao"
+path="res://.godot/imported/spin_effect.png-a7fd265f1c1a150875f7ca9a4fb75d67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TitleScene/Sprites/reaction_games_splash.png"
-dest_files=["res://.godot/imported/reaction_games_splash.png-a828b82fea76b28e0a3302f621b063a8.ctex"]
+source_file="res://Player/Sprites/spin_effect.png"
+dest_files=["res://.godot/imported/spin_effect.png-a7fd265f1c1a150875f7ca9a4fb75d67.ctex"]
 
 [params]
 
