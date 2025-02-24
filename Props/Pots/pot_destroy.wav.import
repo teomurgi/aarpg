@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://darrbqefua61m"
-path="res://.godot/imported/pot_destroy.wav-9b200de50f6459b2271859329e2dc822.sample"
+path="res://.godot/imported/pot_destroy.wav-008425ae0657e1e7e18f5c42db2ac91c.sample"
 
 [deps]
 
-source_file="res://Props/pot_destroy.wav"
-dest_files=["res://.godot/imported/pot_destroy.wav-9b200de50f6459b2271859329e2dc822.sample"]
+source_file="res://Props/Pots/pot_destroy.wav"
+dest_files=["res://.godot/imported/pot_destroy.wav-008425ae0657e1e7e18f5c42db2ac91c.sample"]
 
 [params]
 
