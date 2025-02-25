@@ -1,18 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cefyrevneukbp"]
+[gd_scene load_steps=6 format=3 uid="uid://cefyrevneukbp"]
 
 [ext_resource type="Script" path="res://Props/Plants/plant.gd" id="1_axa8k"]
 [ext_resource type="Texture2D" uid="uid://c8sawarjyk172" path="res://Props/Sprites/Props.png" id="2_rt21o"]
 [ext_resource type="PackedScene" uid="uid://c1px0udxivwom" path="res://GeneralNodes/HitBox/hitbox.tscn" id="3_ganvd"]
-[ext_resource type="PackedScene" uid="uid://j1070sr51jn2" path="res://Interactables/Throwable/throwable.tscn" id="4_vopd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k3ff"]
 size = Vector2(30, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01m8n"]
 size = Vector2(24, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8biqu"]
-size = Vector2(34, 20)
 
 [node name="Plant" type="Node2D"]
 script = ExtResource("1_axa8k")
@@ -38,8 +34,3 @@ collision_mask = 0
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_01m8n")
-
-[node name="Throwable" parent="." instance=ExtResource("4_vopd2")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Throwable"]
-shape = SubResource("RectangleShape2D_8biqu")
