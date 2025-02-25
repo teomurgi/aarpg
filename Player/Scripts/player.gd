@@ -20,6 +20,10 @@ var max_hp: int = 6
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var hitbox: Hitbox = $Hitbox
 @onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
+@onready var lift: StateLift = $StateMachine/Lift
+@onready var held_item: Node2D = $Sprite2D/HeldItem
+@onready var carry: StateCarry = $StateMachine/Carry
+
 
 signal direction_changed(new_direction: Vector2)
 signal player_damaged(hurtbox: Hurtbox)
@@ -95,3 +99,6 @@ func make_invulnerable(duration: float = 1.0) -> void:
 	invulnerable = false
 	hitbox.monitoring = true
 	
+func pickup_item(_t: Throwable) -> void:
+	state_machine.change_state(lift)
+	carry.throwable = _t

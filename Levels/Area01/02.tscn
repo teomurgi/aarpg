@@ -149,3 +149,6 @@ item_data = ExtResource("11_32k2a")
 
 [node name="Pot" parent="." instance=ExtResource("20_qrdwi")]
 position = Vector2(301, 54)
+
+[node name="Pot2" parent="." instance=ExtResource("20_qrdwi")]
+position = Vector2(325, 54)

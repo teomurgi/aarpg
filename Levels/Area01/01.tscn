@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bunlbicjsr55y"]
+[gd_scene load_steps=8 format=3 uid="uid://bunlbicjsr55y"]
 
 [ext_resource type="PackedScene" uid="uid://cb6ftpgkld0jy" path="res://Tile Maps/grass-01.tscn" id="1_kwymh"]
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_m6rqe"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://baus6v1uk568k" path="res://Levels/Music/example_music_01.ogg" id="2_sopns"]
 [ext_resource type="PackedScene" uid="uid://c3s63nt7iqp2y" path="res://Levels/level_transition.tscn" id="4_u58bs"]
 [ext_resource type="PackedScene" uid="uid://cr1oi6t5wbcbj" path="res://Enemies/Goblin/goblin.tscn" id="5_o8cco"]
+[ext_resource type="PackedScene" uid="uid://np3h43gqsbaq" path="res://Props/Pots/pot.tscn" id="7_dlyw5"]
 
 [node name="01" type="Node2D"]
 y_sort_enabled = true
@@ -37,3 +38,18 @@ position = Vector2(211, 141)
 
 [node name="Goblin" parent="." instance=ExtResource("5_o8cco")]
 position = Vector2(466, 69)
+
+[node name="Pot2" parent="." instance=ExtResource("7_dlyw5")]
+position = Vector2(226, 63)
+
+[node name="Pot2" parent="Pot2" instance=ExtResource("7_dlyw5")]
+position = Vector2(26, 0)
+
+[node name="Pot2" parent="Pot2/Pot2" instance=ExtResource("7_dlyw5")]
+position = Vector2(-14, 12)
+
+[node name="Pot2" parent="Pot2/Pot2/Pot2" instance=ExtResource("7_dlyw5")]
+position = Vector2(15, 10)
+
+[node name="Pot2" parent="Pot2/Pot2/Pot2/Pot2" instance=ExtResource("7_dlyw5")]
+position = Vector2(-28, -1)
