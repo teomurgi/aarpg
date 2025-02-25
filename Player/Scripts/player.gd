@@ -48,6 +48,11 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
+func _unhandled_input(_event: InputEvent) -> void:
+	if _event.is_action_pressed("test"):
+		update_hp(-99)
+		player_damaged.emit(%AttackHurtbox)
+
 func set_direction() -> bool:
 	
 	if direction == Vector2.ZERO:
@@ -79,12 +84,9 @@ func animation_direction() -> String:
 func take_damage(hurtbox: Hurtbox) -> void:
 	if invulnerable == true:
 		return
-	update_hp(-hurtbox.damage)
 	if hp > 0:
+		update_hp(-hurtbox.damage)
 		player_damaged.emit(hurtbox)
-	else:
-		player_damaged.emit(hurtbox)
-		update_hp(99)
 
 func update_hp(delta: int) -> void:
 	hp = clampi(hp + delta, 0, max_hp)
@@ -102,3 +104,7 @@ func make_invulnerable(duration: float = 1.0) -> void:
 func pickup_item(_t: Throwable) -> void:
 	state_machine.change_state(lift)
 	carry.throwable = _t
+
+func revive_player() -> void:
+	update_hp(99)
+	state_machine.change_state($StateMachine/Idle)
