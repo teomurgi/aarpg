@@ -49,9 +49,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if _event.is_action_pressed("test"):
-		update_hp(-99)
-		player_damaged.emit(%AttackHurtbox)
+	# if _event.is_action_pressed("test"):
+	# 	PlayerManager.shake_camera()
+	pass
 
 func set_direction() -> bool:
 	
