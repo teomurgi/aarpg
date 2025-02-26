@@ -24,7 +24,6 @@ func _ready() -> void:
 	continue_button.pressed.connect(load_game)
 	title_button.focus_entered.connect(play_audio.bind(button_focus_audio))
 	title_button.pressed.connect(title_screen)
-	LevelManager.level_load_started.connect(hide_game_over_screen)
 
 
 func update_hp(_hp: int, _max_hp: int) -> void:
@@ -65,12 +64,14 @@ func hide_game_over_screen() -> void:
 func load_game() -> void:
 	play_audio(button_select_audio)
 	await fade_to_black()
-	SaveManager.load_game()
+	await SaveManager.load_game()
+	hide_game_over_screen()
 
 func title_screen() -> void:
 	play_audio(button_select_audio)
 	await fade_to_black()
-	LevelManager.load_new_level("res://TitleScene/TitleScene.tscn", "", Vector2.ZERO)
+	await LevelManager.load_new_level("res://TitleScene/TitleScene.tscn", "", Vector2.ZERO)
+	hide_game_over_screen()
 
 func fade_to_black() -> bool:
 	animation_player.play("fade_to_black")
