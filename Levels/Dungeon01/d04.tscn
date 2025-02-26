@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://db31l1y0bvuj8"]
+[gd_scene load_steps=7 format=3 uid="uid://db31l1y0bvuj8"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_3nmda"]
 [ext_resource type="PackedScene" uid="uid://m3xx64imgioc" path="res://Tile Maps/dungeon-01.tscn" id="2_hpi6s"]
 [ext_resource type="PackedScene" uid="uid://vy18spun6aw5" path="res://Levels/player_spawn.tscn" id="3_2y8q3"]
 [ext_resource type="PackedScene" uid="uid://c3s63nt7iqp2y" path="res://Levels/level_transition.tscn" id="4_pds1b"]
 [ext_resource type="PackedScene" uid="uid://taqj5yv7j4pd" path="res://Props/Torches/torch_dungeon.tscn" id="5_7ck0r"]
+[ext_resource type="PackedScene" uid="uid://xl8413434vn7" path="res://Levels/Dungeon01/DarkWizard/energy_orb.tscn" id="6_yod33"]
 
 [node name="D04" type="Node2D"]
 z_index = -1
@@ -40,3 +41,6 @@ position = Vector2(399, 71)
 color = Color(0.4648, 0.56, 0.480667, 1)
 energy = 0.8
 blend_mode = 2
+
+[node name="EnergyOrb" parent="." instance=ExtResource("6_yod33")]
+position = Vector2(399, 47)
